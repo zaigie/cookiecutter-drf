@@ -3,10 +3,10 @@
     "project_name_cn": "我的项目",
     "database": [
         "postgres",
-        "mysql",
-        "mssql",
-        "oracle"
+        "mysql"
     ],
+    "__db_pswd": "{{cookiecutter.project_name}}",
+    "__redis_pswd": "{{cookiecutter.project_name}}",
     "language": [
         "zh-hans",
         "en-us"

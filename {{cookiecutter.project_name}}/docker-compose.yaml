@@ -1,0 +1,65 @@
+version: "3"
+services:
+  backend:
+    image: {{cookiecutter.project_name}}:latest
+    container_name: {{cookiecutter.project_name}}_backend
+    hostname: backend
+    # restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - /var/www/{{cookiecutter.project_name}}/logs:/app/logs
+      - /var/www/{{cookiecutter.project_name}}/media:/app/media
+      - /var/www/{{cookiecutter.project_name}}/static:/app/static
+    links:
+      - db
+      - redis
+    depends_on:
+      - db
+      - redis
+  db:
+    container_name: {{cookiecutter.project_name}}_db
+    hostname: db
+    restart: always
+    {% if cookiecutter.database == "postgres" %}
+    image: postgres:14.3-alpine
+    # ports:
+    #   - "5432:5432"
+    volumes:
+      - /var/www/{{cookiecutter.project_name}}/data/postgresql:/var/lib/postgresql/data
+    environment:
+      TZ: {{cookiecutter.timezone}}
+      POSTGRES_USER: {{cookiecutter.project_name}}
+      POSTGRES_PASSWORD: {{cookiecutter.__db_pswd}}
+    {% elif cookiecutter.database == "mysql" %}
+    image: mysql:5.7
+    # ports:
+    #   - "3306:3306"
+    command:
+    [
+      "--character-set-server=utf8mb4",
+      "--collation-server=utf8mb4_general_ci",
+      "--default-time-zone=+8:00"
+    ]
+    volumes:
+      - /var/www/{{cookiecutter.project_name}}/data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD={{cookiecutter.__db_pswd}}
+      - MYSQL_DATABASE: {{cookiecutter.project_name}}
+      - MYSQL_USER: {{cookiecutter.project_name}}
+      - MYSQL_PASSWORD: {{cookiecutter.__db_pswd}}
+    {% endif %}
+  redis:
+    image: redis:7
+    container_name: {{cookiecutter.project_name}}_redis
+    hostname: redis
+    restart: always
+    volumes:
+      - /var/www/{{cookiecutter.project_name}}/data/redis:/data
+    command: [
+        "redis-server",
+        "--requirepass {{cookiecutter.__redis_pswd}}",
+        "--appendonly yes",
+      ]
+    environment:
+      TZ: {{cookiecutter.timezone}}
