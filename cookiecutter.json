@@ -12,8 +12,8 @@
         "en-us"
     ],
     "timezone": [
-        "UTC",
         "Asia/Shanghai",
+        "UTC",
         "America/New_York"
     ]
 }
