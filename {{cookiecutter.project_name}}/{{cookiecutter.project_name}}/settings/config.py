@@ -13,6 +13,7 @@ from .base import BASE_DIR, INSTALLED_APPS
 INSTALLED_APPS.insert(0, "simpleui")
 INSTALLED_APPS += [
     "rest_framework",
+    "drf_yasg",
     "corsheaders",
     "django_filters",
     "import_export",
@@ -24,6 +25,9 @@ INSTALLED_APPS += [
 # System
 DEBUG = cfg("debug", is_bool=True)
 ALLOWED_HOSTS = ["*"]
+
+# Auth
+ALLOW_FREE_REGISTION = True
 AUTH_USER_MODEL = "auth.User"
 
 # Databases
@@ -49,7 +53,10 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.IsAuthenticated",
+        "auth.permissions.IsUserOrReadOnly",
+    ),
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "DEFAULT_RENDERER_CLASSES": (
         "custom.renderers.CustomRenderer",

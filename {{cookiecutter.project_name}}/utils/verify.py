@@ -54,7 +54,7 @@ def send_sms(phone_number, code, type):
     ret = json.loads(resp.to_json_string(indent=2))
     if ret["SendStatusSet"][0]["Code"] != "Ok":
         raise TencentCloudSDKException
-    set_verify_code(type, phone_number, code)
+    set_verification_code(type, phone_number, code)
     return True
 
 
@@ -69,11 +69,11 @@ def send_email(email, code, type):
     ret = send_mail(title, content, settings.EMAIL_FROM, [email], fail_silently=True)
     if ret != 1:
         raise Exception
-    set_verify_code(type, email, code)
+    set_verification_code(type, email, code)
     return True
 
 
-def set_verify_code(type, verification, code):
+def set_verification_code(type, verification, code):
     """Set verify code to redis
 
     Args:

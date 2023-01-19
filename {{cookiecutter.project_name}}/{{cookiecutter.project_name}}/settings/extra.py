@@ -31,9 +31,9 @@ EMAIL_HOST_USER = cfg("email", "user")
 EMAIL_HOST_PASSWORD = cfg("email", "pswd")
 EMAIL_FROM = f"{cfg('email', 'from')} <{EMAIL_HOST_USER}>"
 
-# verify code
-VERIFY_CODE_EXPIRES = 600
-VERIFY_CODE_INTERVAL = 120
+# verification code
+VERIFICATION_CODE_EXPIRES = 600
+VERIFICATION_CODE_INTERVAL = 120
 
 # Admin
 ADMIN_SITE_TITLE = cfg("admin", "site_title")

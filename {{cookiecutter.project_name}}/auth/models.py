@@ -31,10 +31,12 @@ class User(AbstractUser):
         _("Description"), max_length=32, null=True, blank=True
     )
     phone = models.CharField(_("PhoneNumber"), max_length=24, null=True, blank=True)
-    email = models.CharField(_("Email"), max_length=64)
+    email = models.CharField(_("Email"), max_length=64, null=True, blank=True)
     is_superuser = models.BooleanField(_("IsSuperUser"), default=False)
 
     query = QueryManager()
+
+    REQUIRED_FIELDS = []
 
     class Meta:
         db_table = "users"
