@@ -1,33 +1,44 @@
 from datetime import datetime
 from django.db import models
 from django.utils.encoding import smart_str
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractUser, Group as DjangoGroup
+from model_utils.fields import StatusField
+from model_utils.managers import QueryManager
+from model_utils import Choices
 
 
 class Group(DjangoGroup):
-    group_id = models.CharField("ID", primary_key=True, max_length=8)
-    name = models.CharField("组名称", max_length=150, unique=True)
+    name = models.CharField(_("GroupName"), max_length=150, unique=True)
+
+    query = QueryManager()
 
     class Meta:
         db_table = "groups"
-        verbose_name = "用户组"
+        verbose_name = _("Group")
         verbose_name_plural = verbose_name
 
 
 class User(AbstractUser):
-    user_id = models.CharField("ID", primary_key=True, max_length=8)
-    username = models.CharField("用户名", max_length=64, unique=True)
-    nickname = models.CharField("昵称", max_length=24)
-    avatar = models.FileField("头像", upload_to="avatar", null=True, blank=True)
-    sex = models.IntegerField("性别", choices=((0, "未知"), (1, "男"), (2, "女")), default=0)
-    description = models.CharField("描述", max_length=32, null=True, blank=True)
-    phone = models.CharField("手机号", max_length=24, null=True, blank=True)
-    email = models.CharField("电子邮箱", max_length=64)
-    is_superuser = models.BooleanField("管理员", default=False)
+    SEX_CHOICES = Choices(
+        (0, _("Default")), (1, _("Male")), (2, _("Female"))
+    )  # Perhaps more choices in your country?
+    username = models.CharField(_("UserName"), max_length=64, unique=True)
+    nickname = models.CharField(_("NickName"), max_length=24)
+    avatar = models.FileField(_("Avatar"), upload_to="avatar", null=True, blank=True)
+    sex = StatusField(_("Sex"), choices_name=SEX_CHOICES, default=SEX_CHOICES.Default)
+    description = models.CharField(
+        _("Description"), max_length=32, null=True, blank=True
+    )
+    phone = models.CharField(_("PhoneNumber"), max_length=24, null=True, blank=True)
+    email = models.CharField(_("Email"), max_length=64)
+    is_superuser = models.BooleanField(_("IsSuperUser"), default=False)
+
+    query = QueryManager()
 
     class Meta:
         db_table = "users"
-        verbose_name = "用户"
+        verbose_name = _("User")
         verbose_name_plural = verbose_name
 
     def __str__(self):

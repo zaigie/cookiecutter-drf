@@ -63,7 +63,7 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=60),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=80),
     "AUTH_HEADER_TYPES": ("Bearer", "JWT"),
-    "USER_ID_FIELD": "user_id",
+    "USER_ID_FIELD": "id",
 }
 
 # Static files
