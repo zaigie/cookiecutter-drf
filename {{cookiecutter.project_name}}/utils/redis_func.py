@@ -20,7 +20,7 @@ class Client:
         self.__redis = redis.StrictRedis(connection_pool=pools)
 
     def set(self, key, value):
-        return self.__redis.set(key, value, ex=settings.verification_code_EXPIRES)
+        return self.__redis.set(key, value, ex=settings.VERIFICATION_CODE_EXPIRES)
 
     def get(self, key):
         if self.__redis.exists(key):

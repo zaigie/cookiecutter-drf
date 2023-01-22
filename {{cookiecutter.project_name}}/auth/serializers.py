@@ -23,16 +23,55 @@ class UserSerializer(serializers.ModelSerializer):
         extra_kwargs = {"password": {"write_only": True}}
 
 
-class EmailRegisterSerializer(UserSerializer):
+class CreateUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            "username",
+            "password",
+            "nickname",
+            "avatar",
+            "sex",
+            "email",
+            "phone",
+            "description",
+        ]
+
+
+class EmailRegisterSerializer(CreateUserSerializer):
     email = serializers.EmailField(
         validators=[UniqueValidator(queryset=User.query.all())]
     )
 
 
-class PhoneRegisterSerializer(UserSerializer):
+class PhoneRegisterSerializer(CreateUserSerializer):
     phone = serializers.CharField(
         validators=[UniqueValidator(queryset=User.query.all())]
     )
+
+
+class PasswordUpdateSerializer(serializers.Serializer):
+    old_password = serializers.CharField()
+    new_password = serializers.CharField()
+
+
+class UserPasswordUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["password"]
+
+
+class UserVerificationUpdateSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(
+        validators=[UniqueValidator(queryset=User.query.all())]
+    )
+    phone = serializers.CharField(
+        validators=[UniqueValidator(queryset=User.query.all())]
+    )
+
+    class Meta:
+        model = User
+        fields = ["email", "phone"]
 
 
 class VerificationSerializer(serializers.Serializer):
