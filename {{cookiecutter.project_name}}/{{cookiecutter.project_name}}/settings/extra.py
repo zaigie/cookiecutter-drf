@@ -1,8 +1,7 @@
 from utils.cfg import cfg
 
 # Storage
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-# STATICFILES_STORAGE = "storages.backends.s3boto3.S3StaticStorage"
+DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
 AWS_ACCESS_KEY_ID = cfg("storage", "key_id")
 AWS_SECRET_ACCESS_KEY = cfg("storage", "key")
 AWS_STORAGE_BUCKET_NAME = cfg("storage", "bucket")

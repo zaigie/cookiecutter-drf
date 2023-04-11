@@ -9,8 +9,6 @@ from model_utils import Choices
 
 
 class Group(DjangoGroup):
-    name = models.CharField(_("GroupName"), max_length=150, unique=True)
-
     query = QueryManager()
 
     class Meta:
@@ -26,7 +24,7 @@ class User(AbstractUser):
     username = models.CharField(_("UserName"), max_length=64, unique=True)
     nickname = models.CharField(_("NickName"), max_length=24)
     avatar = models.FileField(_("Avatar"), upload_to="avatar", null=True, blank=True)
-    sex = StatusField(_("Sex"), choices_name=SEX_CHOICES, default=0)
+    sex = StatusField(_("Sex"), choices_name="SEX_CHOICES", default=0)
     description = models.CharField(
         _("Description"), max_length=32, null=True, blank=True
     )
