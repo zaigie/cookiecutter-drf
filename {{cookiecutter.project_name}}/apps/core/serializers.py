@@ -1,5 +1,5 @@
+import re
 from rest_framework import serializers
-from rest_framework.validators import UniqueValidator
 
 from core.models import User, Group
 
@@ -23,84 +23,39 @@ class UserSerializer(serializers.ModelSerializer):
         extra_kwargs = {"password": {"write_only": True}}
 
 
-class CreateUserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = [
-            "username",
-            "password",
-            "nickname",
-            "avatar",
-            "sex",
-            "email",
-            "phone",
-            "description",
-        ]
+class LoginOrRegisterSerializer(serializers.Serializer):
+    phone = serializers.CharField(max_length=11)
+    verification_code = serializers.CharField(max_length=6)
+
+    def create(self, validated_data):
+        user, created = User.objects.get_or_create(
+            phone=validated_data["phone"],
+            defaults={"username": validated_data["phone"]},
+        )
+        return user
 
 
-class EmailRegisterSerializer(CreateUserSerializer):
-    email = serializers.EmailField(
-        validators=[UniqueValidator(queryset=User.query.all())]
-    )
+class PhoneVerificationSerializer(serializers.Serializer):
+    phone = serializers.CharField(max_length=11)
+    verification_code = serializers.CharField(max_length=6)
+
+    def validate_phone(self, phone):
+        pattern = re.compile(r"^1[3-9]\d{9}$")
+        if not pattern.match(phone):
+            raise serializers.ValidationError("无效的手机号")
+        return phone
 
 
-class PhoneRegisterSerializer(CreateUserSerializer):
-    phone = serializers.CharField(
-        validators=[UniqueValidator(queryset=User.query.all())]
-    )
+# class VerificationSerializer(serializers.Serializer):
+#     validation_type = serializers.CharField(max_length=10)
+#     verification = serializers.CharField(max_length=50)
 
-
-class PasswordUpdateSerializer(serializers.Serializer):
-    old_password = serializers.CharField()
-    new_password = serializers.CharField()
-
-
-class UserPasswordUpdateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ["password"]
-
-
-class UserVerificationUpdateSerializer(serializers.ModelSerializer):
-    email = serializers.EmailField(
-        validators=[UniqueValidator(queryset=User.query.all())]
-    )
-    phone = serializers.CharField(
-        validators=[UniqueValidator(queryset=User.query.all())]
-    )
-
-    class Meta:
-        model = User
-        fields = ["email", "phone"]
-
-
-class VerificationSerializer(serializers.Serializer):
-    verification_code = serializers.CharField()
-
-
-class EmailVerificationSerializer(VerificationSerializer):
-    email = serializers.EmailField(
-        validators=[UniqueValidator(queryset=User.query.all())]
-    )
-
-
-class PhoneVerificationSerializer(VerificationSerializer):
-    phone = serializers.CharField(
-        validators=[UniqueValidator(queryset=User.query.all())]
-    )
-
-
-class LoginSerializer(serializers.Serializer):
-    password = serializers.CharField()
-
-
-class BasicLoginSerializer(LoginSerializer):
-    username = serializers.CharField()
-
-
-class EmailLoginSerializer(LoginSerializer):
-    email = serializers.EmailField()
-
-
-class PhoneLoginSerializer(LoginSerializer):
-    phone = serializers.CharField()
+#     def validate_verification(self, verification):
+#         validation_type = self.initial_data["validation_type"]
+#         if validation_type == "email":
+#             return verification
+#         elif validation_type == "phone":
+#             pattern = re.compile(r"^1[3-9]\d{9}$")
+#             if not pattern.match(verification):
+#                 raise serializers.ValidationError("无效的手机号")
+#         return verification

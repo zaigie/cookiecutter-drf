@@ -22,7 +22,7 @@ class User(AbstractUser):
         (0, _("Default")), (1, _("Male")), (2, _("Female"))
     )  # Perhaps more choices in your country?
     username = models.CharField(_("UserName"), max_length=64, unique=True)
-    nickname = models.CharField(_("NickName"), max_length=24)
+    name = models.CharField(_("Name"), max_length=24)
     avatar = models.FileField(_("Avatar"), upload_to="avatar", null=True, blank=True)
     sex = StatusField(_("Sex"), choices_name="SEX_CHOICES", default=0)
     description = models.CharField(
@@ -42,7 +42,7 @@ class User(AbstractUser):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return smart_str("%s-%s" % (self.username, self.nickname))
+        return smart_str("%s-%s" % (self.username, self.name))
 
     def update_last_login(self):
         self.last_login = datetime.now()

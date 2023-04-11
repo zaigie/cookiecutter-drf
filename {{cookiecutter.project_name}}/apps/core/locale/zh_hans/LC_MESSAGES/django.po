@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-29 14:14+0800\n"
+"POT-Creation-Date: 2023-04-11 17:43+0800\n"
 "PO-Revision-Date: 2023-01-19 10:55+0800\n"
 "Last-Translator: ZaiGie <jokerwho@yeah.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,94 +18,89 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps/core/models.py:12
-msgid "GroupName"
-msgstr "组名称"
-
-#: apps/core/models.py:18
+#: {{cookiecutter.project_name}}/apps/core/models.py:16
 msgid "Group"
 msgstr "用户组"
 
-#: apps/core/models.py:24
+#: {{cookiecutter.project_name}}/apps/core/models.py:22
 msgid "Default"
 msgstr "默认"
 
-#: apps/core/models.py:24
+#: {{cookiecutter.project_name}}/apps/core/models.py:22
 msgid "Male"
 msgstr "男"
 
-#: apps/core/models.py:24
+#: {{cookiecutter.project_name}}/apps/core/models.py:22
 msgid "Female"
 msgstr "女"
 
-#: apps/core/models.py:26
+#: {{cookiecutter.project_name}}/apps/core/models.py:24
 msgid "UserName"
 msgstr "用户名"
 
-#: apps/core/models.py:27
-msgid "NickName"
-msgstr "昵称"
+#: {{cookiecutter.project_name}}/apps/core/models.py:25
+msgid "Name"
+msgstr "姓名"
 
-#: apps/core/models.py:28
+#: {{cookiecutter.project_name}}/apps/core/models.py:26
 msgid "Avatar"
 msgstr "头像"
 
-#: apps/core/models.py:29
+#: {{cookiecutter.project_name}}/apps/core/models.py:27
 msgid "Sex"
 msgstr "性别"
 
-#: apps/core/models.py:31
+#: {{cookiecutter.project_name}}/apps/core/models.py:29
 msgid "Description"
 msgstr "描述"
 
-#: apps/core/models.py:33
+#: {{cookiecutter.project_name}}/apps/core/models.py:31
 msgid "PhoneNumber"
 msgstr "电话号码"
 
-#: apps/core/models.py:34
+#: {{cookiecutter.project_name}}/apps/core/models.py:32
 msgid "Email"
 msgstr "电子邮箱"
 
-#: apps/core/models.py:35
+#: {{cookiecutter.project_name}}/apps/core/models.py:33
 msgid "IsSuperUser"
 msgstr "管理员"
 
-#: apps/core/models.py:43
+#: {{cookiecutter.project_name}}/apps/core/models.py:41
 msgid "User"
 msgstr "用户"
 
-#: apps/core/views.py:46 apps/core/views.py:185
-msgid "Unsupported registration authentication mode"
-msgstr "不支持的注册认证方式"
-
-#: apps/core/views.py:66 apps/core/views.py:143
+#: {{cookiecutter.project_name}}/apps/core/views.py:46
 msgid "Verification code error"
 msgstr "验证码错误"
 
-#: apps/core/views.py:69 apps/core/views.py:146
+#: {{cookiecutter.project_name}}/apps/core/views.py:49
 msgid "The verification code does not exist or has expired"
 msgstr "验证码不存在或已过期"
 
-#: apps/core/views.py:104
-msgid "The user does not exist or the password is incorrect"
-msgstr "用户不存在或密码错误"
+#~ msgid "User does not exist"
+#~ msgstr "用户不存在"
 
-#: apps/core/views.py:129
-msgid "Unsupported verification type"
-msgstr "不支持的验证类型"
+#~ msgid "Unsupported registration authentication mode"
+#~ msgstr "不支持的注册认证方式"
 
-#: apps/core/views.py:135
-msgid "Verification type or already exists"
-msgstr "此验证类型已存在"
+#~ msgid "The user does not exist or the password is incorrect"
+#~ msgstr "用户不存在或密码错误"
 
-#: apps/core/views.py:163
-msgid "The old password is incorrect"
-msgstr "旧密码不正确"
+#~ msgid "Unsupported verification type"
+#~ msgstr "不支持的验证类型"
 
-#: apps/core/views.py:195
-msgid "The user already exists."
-msgstr "用户已存在"
+#~ msgid "Verification type or already exists"
+#~ msgstr "此验证类型已存在"
 
-#: apps/core/views.py:204
-msgid "Verification code sent successfully"
-msgstr "验证码发送成功"
+#~ msgid "The old password is incorrect"
+#~ msgstr "旧密码不正确"
+
+#~ msgid "The user already exists."
+#~ msgstr "用户已存在"
+
+#~ msgid "Verification code sent successfully"
+#~ msgstr "验证码发送成功"
+
+#~ msgid "GroupName"
+#~ msgstr "组名称"
