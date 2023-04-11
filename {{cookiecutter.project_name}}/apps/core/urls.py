@@ -1,5 +1,5 @@
 from django.urls import path, include
-from auth.views import (
+from core.views import (
     UserViewSet,
     CreateUserView,
     LoginView,

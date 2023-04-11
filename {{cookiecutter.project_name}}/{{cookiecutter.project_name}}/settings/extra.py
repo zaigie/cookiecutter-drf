@@ -49,15 +49,15 @@ SIMPLEUI_HOME_INFO = False
 # https://simpleui.72wo.com/docs/simpleui/QUICK.html#%E8%8F%9C%E5%8D%95
 # SIMPLEUI_CONFIG = {
 #     "system_keep": False,
-#     "menu_display": ["Auth"],
+#     "menu_display": ["Core"],
 #     "dynamic": False,
 #     "menus": [
 #         {
-#             "app": "auth",
-#             "name": "Auth",
+#             "app": "core",
+#             "name": "Core",
 #             "icon": "fas fa-user-shield",
 #             "models": [
-#                 {"name": "User", "icon": "fa fa-user", "url": "auth/user/"},
+#                 {"name": "User", "icon": "fa fa-user", "url": "core/user/"},
 #             ],
 #         },
 #     ],

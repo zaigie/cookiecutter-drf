@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
-from auth.models import User, Group
+from core.models import User, Group
 
 
 class GroupSerializer(serializers.ModelSerializer):

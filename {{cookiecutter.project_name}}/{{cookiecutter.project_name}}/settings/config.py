@@ -19,7 +19,7 @@ INSTALLED_APPS += [
     "import_export",
 ]
 INSTALLED_APPS += [
-    "auth",
+    "core",
 ]
 
 # System
@@ -28,7 +28,7 @@ ALLOWED_HOSTS = ["*"]
 
 # Auth
 ALLOW_FREE_REGISTION = True
-AUTH_USER_MODEL = "auth.User"
+AUTH_USER_MODEL = "core.User"
 
 # Databases
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
@@ -55,7 +55,7 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_PERMISSION_CLASSES": (
         "rest_framework.permissions.IsAuthenticated",
-        "auth.permissions.IsUserOrReadOnly",
+        "core.permissions.IsUserOrReadOnly",
     ),
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "DEFAULT_RENDERER_CLASSES": (

@@ -15,8 +15,8 @@ from custom.exceptions import CustomAPIError
 from utils.redis_func import Client as RedisClient
 from utils.verify import send_email, send_sms
 
-from auth.models import User
-import auth.serializers as serializers
+from core.models import User
+import core.serializers as serializers
 
 
 class UserViewSet(
@@ -30,7 +30,6 @@ class UserViewSet(
 
 
 class CreateUserView(GenericAPIView):
-
     authentication_classes = []
     permission_classes = [AllowAny]
     queryset = User.query.all()
@@ -75,7 +74,6 @@ class CreateUserView(GenericAPIView):
 
 
 class LoginView(GenericAPIView):
-
     authentication_classes = []
     permission_classes = [AllowAny]
     queryset = User.query.all()
@@ -115,7 +113,6 @@ class LoginView(GenericAPIView):
 
 
 class UserVerificationUpdateViewSet(mixins.UpdateModelMixin, GenericViewSet):
-
     lookup_field = "username"
     queryset = User.query.all()
     serializer_class = serializers.UserVerificationUpdateSerializer
@@ -150,7 +147,6 @@ class UserVerificationUpdateViewSet(mixins.UpdateModelMixin, GenericViewSet):
 
 
 class UserPasswordUpdateViewSet(mixins.UpdateModelMixin, GenericViewSet):
-
     lookup_field = "username"
     queryset = User.query.all()
     serializer_class = serializers.PasswordUpdateSerializer
@@ -172,7 +168,6 @@ class UserPasswordUpdateViewSet(mixins.UpdateModelMixin, GenericViewSet):
 
 
 class VerificationViewSet(GenericViewSet):
-
     authentication_classes = []
     permission_classes = [AllowAny]
 

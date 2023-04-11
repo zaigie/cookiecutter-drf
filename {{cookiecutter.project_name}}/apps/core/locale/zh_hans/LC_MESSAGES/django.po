@@ -18,94 +18,94 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps/auth/models.py:12
+#: apps/core/models.py:12
 msgid "GroupName"
 msgstr "组名称"
 
-#: apps/auth/models.py:18
+#: apps/core/models.py:18
 msgid "Group"
 msgstr "用户组"
 
-#: apps/auth/models.py:24
+#: apps/core/models.py:24
 msgid "Default"
 msgstr "默认"
 
-#: apps/auth/models.py:24
+#: apps/core/models.py:24
 msgid "Male"
 msgstr "男"
 
-#: apps/auth/models.py:24
+#: apps/core/models.py:24
 msgid "Female"
 msgstr "女"
 
-#: apps/auth/models.py:26
+#: apps/core/models.py:26
 msgid "UserName"
 msgstr "用户名"
 
-#: apps/auth/models.py:27
+#: apps/core/models.py:27
 msgid "NickName"
 msgstr "昵称"
 
-#: apps/auth/models.py:28
+#: apps/core/models.py:28
 msgid "Avatar"
 msgstr "头像"
 
-#: apps/auth/models.py:29
+#: apps/core/models.py:29
 msgid "Sex"
 msgstr "性别"
 
-#: apps/auth/models.py:31
+#: apps/core/models.py:31
 msgid "Description"
 msgstr "描述"
 
-#: apps/auth/models.py:33
+#: apps/core/models.py:33
 msgid "PhoneNumber"
 msgstr "电话号码"
 
-#: apps/auth/models.py:34
+#: apps/core/models.py:34
 msgid "Email"
 msgstr "电子邮箱"
 
-#: apps/auth/models.py:35
+#: apps/core/models.py:35
 msgid "IsSuperUser"
 msgstr "管理员"
 
-#: apps/auth/models.py:43
+#: apps/core/models.py:43
 msgid "User"
 msgstr "用户"
 
-#: apps/auth/views.py:46 apps/auth/views.py:185
+#: apps/core/views.py:46 apps/core/views.py:185
 msgid "Unsupported registration authentication mode"
 msgstr "不支持的注册认证方式"
 
-#: apps/auth/views.py:66 apps/auth/views.py:143
+#: apps/core/views.py:66 apps/core/views.py:143
 msgid "Verification code error"
 msgstr "验证码错误"
 
-#: apps/auth/views.py:69 apps/auth/views.py:146
+#: apps/core/views.py:69 apps/core/views.py:146
 msgid "The verification code does not exist or has expired"
 msgstr "验证码不存在或已过期"
 
-#: apps/auth/views.py:104
+#: apps/core/views.py:104
 msgid "The user does not exist or the password is incorrect"
 msgstr "用户不存在或密码错误"
 
-#: apps/auth/views.py:129
+#: apps/core/views.py:129
 msgid "Unsupported verification type"
 msgstr "不支持的验证类型"
 
-#: apps/auth/views.py:135
+#: apps/core/views.py:135
 msgid "Verification type or already exists"
 msgstr "此验证类型已存在"
 
-#: apps/auth/views.py:163
+#: apps/core/views.py:163
 msgid "The old password is incorrect"
 msgstr "旧密码不正确"
 
-#: apps/auth/views.py:195
+#: apps/core/views.py:195
 msgid "The user already exists."
 msgstr "用户已存在"
 
-#: apps/auth/views.py:204
+#: apps/core/views.py:204
 msgid "Verification code sent successfully"
 msgstr "验证码发送成功"
