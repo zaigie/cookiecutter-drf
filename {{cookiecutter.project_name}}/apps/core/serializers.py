@@ -37,7 +37,6 @@ class LoginOrRegisterSerializer(serializers.Serializer):
 
 class PhoneVerificationSerializer(serializers.Serializer):
     phone = serializers.CharField(max_length=11)
-    verification_code = serializers.CharField(max_length=6)
 
     def validate_phone(self, phone):
         pattern = re.compile(r"^1[3-9]\d{9}$")

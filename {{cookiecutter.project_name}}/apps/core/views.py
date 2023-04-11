@@ -16,10 +16,9 @@ import core.serializers as serializers
 
 class UserViewSet(
     mixins.RetrieveModelMixin,
-    mixins.UpdateModelMixin,
+    mixins.ListModelMixin,
     GenericViewSet,
 ):
-    lookup_field = "username"
     queryset = User.query.all()
     serializer_class = serializers.UserSerializer
 
