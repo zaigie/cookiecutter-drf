@@ -8,7 +8,7 @@ from rest_framework.viewsets import GenericViewSet
 from rest_framework_simplejwt.tokens import RefreshToken
 from custom.exceptions import CustomAPIError
 from utils.redis_func import Client as RedisClient
-from utils.verify import send_email, send_sms
+from utils.verify import send_email, send_sms, set_verification_code
 
 from core.models import User
 import core.serializers as serializers
@@ -70,8 +70,11 @@ class PhoneVerificationView(GenericAPIView):
 
         phone = serializer.validated_data["phone"]
         verification_code = str(random.randint(100000, 999999))
-        send_sms(phone, verification_code, "register")
-        return Response({"message": "ok"})
+        ret = send_sms(phone, verification_code, "register")
+        if ret["SendStatusSet"][0]["Code"] != "Ok":
+            return CustomAPIError(_("Verification code send failed"))
+        set_verification_code("register", phone, verification_code)
+        return Response({"msg": _("Verification code send success")})
 
 
 # class VerificationViewSet(GenericViewSet):

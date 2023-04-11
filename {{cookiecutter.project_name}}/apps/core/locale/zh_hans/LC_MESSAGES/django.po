@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-11 17:43+0800\n"
+"POT-Creation-Date: 2023-04-11 19:47+0800\n"
 "PO-Revision-Date: 2023-01-19 10:55+0800\n"
 "Last-Translator: ZaiGie <jokerwho@yeah.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,13 +70,21 @@ msgstr "管理员"
 msgid "User"
 msgstr "用户"
 
-#: {{cookiecutter.project_name}}/apps/core/views.py:46
+#: {{cookiecutter.project_name}}/apps/core/views.py:45
 msgid "Verification code error"
 msgstr "验证码错误"
 
-#: {{cookiecutter.project_name}}/apps/core/views.py:49
+#: {{cookiecutter.project_name}}/apps/core/views.py:48
 msgid "The verification code does not exist or has expired"
 msgstr "验证码不存在或已过期"
+
+#: {{cookiecutter.project_name}}/apps/core/views.py:75
+msgid "Verification code send failed"
+msgstr "验证码发送失败"
+
+#: {{cookiecutter.project_name}}/apps/core/views.py:77
+msgid "Verification code send success"
+msgstr "验证码发送成功"
 
 #~ msgid "User does not exist"
 #~ msgstr "用户不存在"
@@ -98,9 +106,6 @@ msgstr "验证码不存在或已过期"
 
 #~ msgid "The user already exists."
 #~ msgstr "用户已存在"
-
-#~ msgid "Verification code sent successfully"
-#~ msgstr "验证码发送成功"
 
 #~ msgid "GroupName"
 #~ msgstr "组名称"

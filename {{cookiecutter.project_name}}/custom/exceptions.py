@@ -7,16 +7,6 @@ from rest_framework import status
 def custom_exception_handler(exc, context):
     response = exception_handler(exc, context)
 
-    for index, value in enumerate(response.data):
-        if index == 0:
-            key = value
-            value = response.data[key]
-
-            if isinstance(value, str):
-                error_msg = value
-            else:
-                error_msg = f"{key}: {value[0]}"
-
     if response is None:
         return Response(
             {
@@ -26,6 +16,16 @@ def custom_exception_handler(exc, context):
             status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             exception=True,
         )
+
+    for index, value in enumerate(response.data):
+        if index == 0:
+            key = value
+            value = response.data[key]
+
+            if isinstance(value, str):
+                error_msg = value
+            else:
+                error_msg = f"{key}: {value[0]}"
 
     error_code = 999 if response.status_code == 200 else response.status_code
     return Response(

@@ -52,10 +52,7 @@ def send_sms(phone_number, code, type):
     req.TemplateParamSet = [code]
     resp = client.SendSms(req)
     ret = json.loads(resp.to_json_string(indent=2))
-    if ret["SendStatusSet"][0]["Code"] != "Ok":
-        raise TencentCloudSDKException
-    set_verification_code(type, phone_number, code)
-    return True
+    return ret
 
 
 def send_email(email, code, type):
@@ -67,10 +64,7 @@ def send_email(email, code, type):
     title = TYPES[type]
     content = f"您的验证码为{code}。有效期为10分钟，请尽快输入！"
     ret = send_mail(title, content, settings.EMAIL_FROM, [email], fail_silently=True)
-    if ret != 1:
-        raise Exception
-    set_verification_code(type, email, code)
-    return True
+    return ret
 
 
 def set_verification_code(type, verification, code):
